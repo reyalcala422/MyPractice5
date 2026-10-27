@@ -51,10 +51,71 @@
           }
         }
       }
+    },
+    "/api/Auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "RegisterDTO": {
+        "type": "object",
+        "properties": {
+          "firstname": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "lastname": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "email": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "password": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
       "WeatherForecast": {
         "type": "object",
         "properties": {
@@ -91,6 +152,9 @@
   "tags": [
     {
       "name": "WeatherForecast"
+    },
+    {
+      "name": "Auth"
     }
   ]
 }

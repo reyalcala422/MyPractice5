@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "MyPractice5.Auth.AuthController",
+    "Method": "Register",
+    "RelativePath": "api/Auth/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "MyPractice5.DTO.RegisterDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "MyPractice5.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",
