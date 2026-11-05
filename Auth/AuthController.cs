@@ -61,6 +61,34 @@ namespace MyPractice5.Auth
         }
 
 
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(LoginDTO dto) {
+
+            var user = await _context.Users.FirstOrDefaultAsync(x=>x.Email == dto.Email);
+
+            if (user == null)
+                return Unauthorized("Invalid email or password!");
+
+            bool passwordValid = BCrypt.Net.BCrypt
+                .Verify(dto.Password,user.Password);
+
+
+            if (!passwordValid)
+                return Unauthorized("Invalid email or password");
+
+            var token = GenerateToken(user);
+
+            return Ok(new { 
+            message= "Login sucess!",
+            userId= user.Id,
+            emai= user.Email,
+            token = token
+            });
+
+        }
+
+
+
 
         // ==========================
         // GENERATE JWT
