@@ -32,6 +32,53 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "MyPractice5.Controllers.UserBrand.BrandController",
+    "Method": "Post",
+    "RelativePath": "api/Brand",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "MyPractice5.DTO.UserBrandDTO.InsertBrand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyPractice5.Controllers.UserBrand.BrandController",
+    "Method": "Get",
+    "RelativePath": "api/Brand",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyPractice5.Controllers.UserBrand.BrandController",
+    "Method": "Put",
+    "RelativePath": "api/Brand/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "MyPractice5.DTO.UserBrandDTO.UpdateBrandDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "MyPractice5.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",

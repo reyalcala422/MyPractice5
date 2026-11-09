@@ -22,6 +22,37 @@ namespace MyPractice5.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("MyPractice5.Model.Brand", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Brand");
+                });
+
+            modelBuilder.Entity("MyPractice5.Model.UserBrand", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BrandId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "BrandId");
+
+                    b.HasIndex("BrandId");
+
+                    b.ToTable("UserBrand");
+                });
+
             modelBuilder.Entity("MyPractice5.Model.Users", b =>
                 {
                     b.Property<int>("Id")
@@ -52,6 +83,35 @@ namespace MyPractice5.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("MyPractice5.Model.UserBrand", b =>
+                {
+                    b.HasOne("MyPractice5.Model.Brand", "Brand")
+                        .WithMany("UserBrands")
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyPractice5.Model.Users", "User")
+                        .WithMany("UserBrands")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Brand");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MyPractice5.Model.Brand", b =>
+                {
+                    b.Navigation("UserBrands");
+                });
+
+            modelBuilder.Entity("MyPractice5.Model.Users", b =>
+                {
+                    b.Navigation("UserBrands");
                 });
 #pragma warning restore 612, 618
         }
